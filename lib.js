@@ -7,6 +7,22 @@ class Library {
   addPlaylist(playlist){
     this.playlists.push(playlist);
   }
+  get tracksList(){
+    let tracks = [];
+    this.playlists.forEach((playlist)=>{
+      playlist.tracks.forEach((track)=>{
+        tracks.push(track);
+       })
+    })
+    return tracks
+  }
+  get playlists(){
+    let playlists = [];
+    this.playlists.forEach((playlist)=>{
+      playlists.push(playlist);
+    })
+    return playlists
+  }
 }
 
 class Playlist {
@@ -42,11 +58,9 @@ class Track {
   }
 }
 l1 = new Library('MyLibrary', 'Emanuel');
-p1 = new Playlist('Cool Playlist');
-t1 = new Track('Cool Song', 5, 141);
-t2 = new Track('Bad Song', 2, 93);
-p1.addTrack(t1);
-p1.addTrack(t2);
-l1.addPlaylist(p1);
-console.log(l1.playlists[0].totalDuration);
-console.log(l1.playlists[0].overallRating);
+l1.addPlaylist(new Playlist('Cool Playlist'));
+l1.playlists[0].addTrack(new Track('Cool Song', 5, 141));
+l1.playlists[0].
+addTrack(new Track('Bad Song', 2, 93));
+console.log(l1.tracksList)
+
